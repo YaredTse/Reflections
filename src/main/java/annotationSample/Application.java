@@ -2,6 +2,7 @@ package annotationSample;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 
 public class Application {
 
@@ -15,6 +16,9 @@ public class Application {
             MyAnno myAnno = method.getAnnotation(MyAnno.class);
 
             if ( myAnno != null) {
+
+                int getAccessModifier = method.getModifiers();
+                System.out.println( Modifier.isPrivate(getAccessModifier) );
                 String des = myAnno.description();
 
                 if ( des != ""){
